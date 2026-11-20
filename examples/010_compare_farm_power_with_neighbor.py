@@ -13,6 +13,11 @@ import numpy as np
 from floris import FlorisModel
 
 
+# 以本文件位置为锚点，避免依赖当前工作目录
+HERE = Path(__file__).resolve().parent
+OUT = HERE / "outputs"
+OUT.mkdir(parents=True, exist_ok=True)
+
 # Instantiate FLORIS using either the GCH or CC model
 fmodel = FlorisModel("inputs/gch.yaml")  # GCH model matched to the default "legacy_gauss" of V2
 
@@ -74,3 +79,4 @@ ax.legend()
 ax.set_xlabel("Wind Direction (deg)")
 ax.set_ylabel("Power (kW)")
 plt.show()
+fig.savefig(OUT / "farm_power_with_neighbor.png", dpi=150, bbox_inches="tight")

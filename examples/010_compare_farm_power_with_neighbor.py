@@ -7,6 +7,8 @@ via wake losses, but whose own power production is not considered in farm power 
 """
 
 
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -19,7 +21,8 @@ OUT = HERE / "outputs"
 OUT.mkdir(parents=True, exist_ok=True)
 
 # Instantiate FLORIS using either the GCH or CC model
-fmodel = FlorisModel("inputs/gch.yaml")  # GCH model matched to the default "legacy_gauss" of V2
+INPUT = HERE / "inputs" / "gch.yaml"
+fmodel = FlorisModel(str(INPUT))  # GCH model matched to the default "legacy_gauss" of V2
 
 # Define a 4 turbine farm turbine farm
 D = 126.0
